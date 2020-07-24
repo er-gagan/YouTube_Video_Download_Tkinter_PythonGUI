@@ -1,7 +1,8 @@
 from tkinter import *
 from YouTube import *
+
 root = Tk()
-root.geometry('800x600')
+root.geometry('790x550')
 root.resizable(0,0)
 photo = PhotoImage(file = "./logoo.png")
 root.iconphoto(True,photo)
@@ -20,11 +21,18 @@ def Clear():
     
     e2.insert(0,"Paste The Destination Path To Download Video")
     e2.bind("<FocusIn>", lambda args: e2.delete('0', 'end'))
-
+    
 def search():
     link = Link.get()
     YouTubeLink(link,l1,l2,l3,l4)
-    print(link)
+    
+def VideoLow():
+    path = Path.get()
+    Low(path)
+
+def VideoHigh():
+    path = Path.get()
+    High(path)
 
 e1 = Entry(root,font=("ArialBlack",25),width=40,bd=5,textvariable=Link)
 e1.place(x=30,y=100)
@@ -46,8 +54,8 @@ l4.place(x=50,y=340)
 e2 = Entry(root,font=("ArialBlack",25),width=40,bd=5,textvariable=Path)
 e2.place(x=30,y=400)
 
-Button(root,text="Download Video In Low Quality",font=("ArialBlack",15),bd=5).place(x=50,y=470)
-Button(root,text="Download Video In High Quality",font=("ArialBlack",15),bd=5).place(x=440,y=470)
+Button(root,text="Download Video In Low Quality",font=("ArialBlack",15,),command=VideoLow,bd=5).place(x=50,y=470)
+Button(root,text="Download Video In High Quality",font=("ArialBlack",15),command=VideoHigh,bd=5).place(x=440,y=470)
 
 Clear()
 
